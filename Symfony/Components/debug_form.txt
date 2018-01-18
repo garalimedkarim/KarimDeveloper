@@ -1,0 +1,44 @@
+{{dump(form)}}
+----
+
+ {{dump(form_start(form))}}
+ --
+ {{dump(form_widget(form))}}
+ --
+ {{dump(form_end(form))}}
+ --
+
+ ---------------
+{{ form_label(form.nom_fournisseur) }}
+{{ form_errors(form.nom_fournisseur) }}
+{{ form_widget(form.nom_fournisseur) }}
+ ---------------
+	<!-- {{ form_start(form) }} -->
+	<!-- {{ form_widget(form) }} -->
+	<!-- {{ form_end(form) }} -->
+/ / / / / / / / / 
+{{ form(form.nom_fournisseur) }}
+/ / / / / / 	
+*************
+{% for i in form.children  %}
+    {{ dump(form_widget(i)) }}
+    {{ dump(form_label(i)) }}
+***********
+
+{% endfor %}
+{{ dump(form_widget(form.children.nom_fournisseur)) }}	-----
+
+ {{ form_widget(form.nom_fournisseur,{'attr': {'style': 'color:red'} }) }}
+
+
+ --- --- --- --- ---
+
+RAPPORT :
+
+  	{{ form_start(form) }}
+		{{ form_label(form.nom_fournisseur, 'NAME', { 'label_attr': {'style': 'color:green'} }) }}
+		{{ form_errors(form.nom_fournisseur) }}
+		{{ form_widget(form.nom_fournisseur,{'attr': {'style': 'color:red'} }) }}
+		
+		{{ form_widget(form) }}
+	{{ form_end(form) }}

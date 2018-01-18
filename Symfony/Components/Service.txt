@@ -1,0 +1,99 @@
+// Types of Injection
+// Il existe 3 type d'injection de service dans un autre :
+	1) Constructor Injection  => arguments: ['@mailer']
+	2) Setter Injection =>  calls:
+            					 - [setMailer, ['@mailer']]
+	3) Property Injection =>  properties:
+             						mailer: '@mailer'
+
+// On récupère le service
+	$service = $this->container->get('home.services');	
+	$service->die1();
+
+
+// Simple Service Listener : 
+	#service.yml :
+
+    home.listener.requestListener:
+        class: HomeBundle\Listener\RequestListener
+        tags:
+            - { name: kernel.event_listener, event: kernel.response, method: listenRequest }
+
+// Injecting One service to another :
+
+	#service 1 : service listener will call a simple service 
+	<?php 
+	#src/HomeBundle/Listener/RequestListener.php
+	namespace HomeBundle\Listener;
+
+	class RequestListener
+	{
+		protected $service;
+		
+		public function __construct($service)
+		{
+			$this->service = $service;
+		}
+		
+		public function listenRequest()
+		{
+			$this->service->die1();
+		}
+	}
+
+	#service 2 : simple service :
+	<?php
+	#src/HomeBundle/Services/BeforeAnyAction.php
+	namespace HomeBundle\Services;
+
+	class BeforeAnyAction
+	{
+		public function die1(){
+			die('Listening Service BeforeAnyAction');
+		}
+	}
+
+	?>	
+
+	#services.yml :
+	#src/HomeBundle/Resources/config/services.yml
+	services:
+	    home.service.beforeAnyAction: #service appelé
+	        class: HomeBundle\Services\BeforeAnyAction
+
+	    home.listener.requestListener: #service appelant
+	        class: HomeBundle\Listener\RequestListener
+	        arguments: ['@home.service.beforeAnyAction']
+	        tags:
+	            - { name: kernel.event_listener, event: kernel.response, method: listenRequest }
+
+	"Le listener permet également de passer les bons arguments à notre service BetaHTML. En effet, lorsque le gestionnaire d'évènements exécute ses listeners, il ne se préoccupe pas de leurs arguments ! Le seul argument qu'il leur donne est un objet Symfony\Component\EventDispatcher\Event, représentant l'évènement en cours.
+
+	Dans notre cas de l'évènement kernel.response, on a le droit à un objetSymfony\Component\HttpKernel\Event\FilterResponseEvent, qui hérite bien évidemment du premier.
+
+	Dans notre cas, l'évènement FilterResponseEventd ispose des méthodes suivantes :"
+
+	<?php
+		class FilterResponseEvent
+		{
+		  public function getResponse();
+		  public function setResponse(Response $response);
+		  public function getKernel();
+		  public function getRequest();
+		  public function getRequestType();
+		  public function isPropagationStopped();
+		  public function stopPropagation();
+		}
+
+
+    // On teste si la requête est bien la requête principale (et non une sous-requête)
+    if (!$event->isMasterRequest()) {
+      return;
+    }
+
+	"Le premier if teste si la requête courante est bien la requête principale. En effet, souvenez-vous, on peut effectuer des sous-requêtes via la fonction{{ render }}de Twig ou alors la méthode $this->forward()d'un contrôleur. Cette condition permet de ne pas réexécuter le code lors d'une sous-requête (on ne va pas mettre des mentions « bêta » sur chaque sous-requête !). Bien entendu, si vous souhaitez que votre comportement s'applique même aux sous-requêtes, ne mettez pas cette condition.
+
+
+	app_dev.php => allez dans l'ongletEventsdu Profiler, 
+
+	Notez la méthodegetDispatcher()définie dans tous les évènements : elle récupère le gestionnaire d'évènements. Cela permet à un listener qui écoute un évènement A de dire au gestionnaire qu'il souhaite également écouter un autre évènement B. Cela peut être utile dans certains cas."

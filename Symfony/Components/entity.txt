@@ -1,0 +1,4 @@
+all standard Constraints :
+	https://symfony.com/doc/current/reference/constraints.html
+Constraite personalisé :
+	http://symfony.com/doc/current/validation/custom_constraint.html

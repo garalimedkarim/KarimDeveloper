@@ -1,0 +1,58 @@
+
+Used Bundle :
+	jms/serializer-bundle
+	nelmio/cors-bundle
+
+Creating a JSON Response:
+* Documentation :
+	Any type of response can be created via the Response class by setting the right content and headers. A JSON response might look like this:
+
+	use Symfony\Component\HttpFoundation\Response;
+
+	$response = new Response();
+	$response->setContent(json_encode(array(
+	    'data' => 123,
+	)));
+	$response->headers->set('Content-Type', 'application/json');
+	There is also a helpful JsonResponse class, which can make this even easier:
+
+
+	use Symfony\Component\HttpFoundation\JsonResponse;
+
+	// if you know the data to send when creating the response
+	$response = new JsonResponse(array('data' => 123));
+
+	// if you don't know the data to send when creating the response
+	$response = new JsonResponse();
+	// ...
+	$response->setData(array('data' => 123));
+
+	// if the data to send is already encoded in JSON
+	$response = JsonResponse::fromJsonString('{ "data": 123 }');
+	New in version 3.2: The fromJsonString() method was added in Symfony 3.2.
+	The JsonResponse class sets the Content-Type header to application/json and encodes your data to JSON when needed.
+
+	CAUTION
+	To avoid XSSI JSON Hijacking, you should pass an associative array as the outer-most array to JsonResponse and not an indexed array so that the final result is an object (e.g. {"object": "not inside an array"}) instead of an array (e.g. [{"object": "inside an array"}]). Read the OWASP guidelines for more information.
+
+	Only methods that respond to GET requests are vulnerable to XSSI 'JSON Hijacking'. Methods responding to POST requests only remain unaffected.
+	JSONP Callback¶
+	If you're using JSONP, you can set the callback function that the data should be passed to:
+
+	$response->setCallback('handleResponse');
+	In this case, the Content-Type header will be text/javascript and the response content will look like this:
+
+	handleResponse({'data': 123}
+
+* What he have done :
+	
+	1) Serializing Data recuperated by findAll to JSON using jms_serializer :
+
+	$data = $this->get('jms_serializer')->serialize($images,'json');
+
+	$response = array(
+		'message' => 'images loaded with success',
+		'result'  => json_decode($data)
+		);
+
+	return new JsonResponse($response,200);   // (response,status)		

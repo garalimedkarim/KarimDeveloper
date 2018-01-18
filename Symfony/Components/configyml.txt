@@ -1,0 +1,33 @@
+# array parameter :
+
+	parameters:
+	   array_name3: 
+	      1: [1, 2, 3]
+	      2: [a, b, c]
+	      bla: [x, y, z]
+
+	    param_x: 
+	        1: A
+	        2: B
+	        bla: C
+
+	    imgs_dir: '%kernet.project_dir%'web/uploads/imgs'
+
+	$aab=$this->container->getParameter('param_x');
+
+# get a global parm inside an entity :
+	Best practice is to use a service to persist your entity. This one would inject the container and set your parameter when you call your updateMyEntity() service method.
+
+	Inside your controller (or whatever you want):
+
+	$user = new User('foo');
+	$user->setSomeProperty('bar');
+	$userService->update($user);
+	Inside the UserService:
+
+	public function update(User $user) {
+	    $user->setSomeParameter($this->container->getParameter('value'));
+	    $this->em->persist($user);
+	}	
+
+
