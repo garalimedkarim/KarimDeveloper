@@ -1,5 +1,8 @@
 #---GIT---#
 
+#Clone from github:
+	git clone https://github.com/iamshaunjp/rest-api-playlist.git
+
 #Remotes
 	show all remote :
 		git remote -v
@@ -10,11 +13,11 @@
 	remove remote:
 		git remote rm origin
 
+#push all branches
+	git push origin --all	
+
 #Clean all untracked files and directories
 	git clean -df
 	
 #Detailler les nouveaux dossier :
 	git status -u 
-
-#push all branches
-	git push origin --all	
