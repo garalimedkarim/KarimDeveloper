@@ -7,7 +7,7 @@ Install vim:
 	> sudo apt-get install vim
 
 Remove Software:
-	> sudo apt-get remove vim #ForExple
+	> sudo apt-get remove vim
 
 Ubuntu Software:
 	Install GDebi Package Installer : it role is installing package.deb
