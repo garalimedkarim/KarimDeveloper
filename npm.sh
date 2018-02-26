@@ -1,6 +1,7 @@
 
 search packages:
 	npm install -g npmsearch
+	npm find <package>
 	npmsearch <keywords> [options]
 
 	options:

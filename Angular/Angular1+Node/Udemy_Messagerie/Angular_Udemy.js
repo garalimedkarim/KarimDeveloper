@@ -565,7 +565,7 @@ constant("monservice", { object });
 	Travailler avec vueCourante pour l affichage des differentes vues.		
 
 V-Serveur Web & API RESTful Node.js:
-1. Introduction:
+1. Introduction:			
 2. Presentation de NodeJs
 3. Premiers pas avec NodeJs:
 	NodeJs = Serveur HTTP, Serveru FTP, ...
@@ -600,5 +600,239 @@ V-Serveur Web & API RESTful Node.js:
 			app.use("/api",api);
 7. Ecriture d un module Node-Generation des mails
 			Tuto5
+
+VI- Requetes HTTP Asynchrones et promesses:
+1. Introduction:
+	Communiquer Angular ave Node : $http,$ressource, api cue.
+
+2. Requete Asynchrones et promesse:
+	Deux services permettant de faire des requetes asynchrones:
+		$http: Service le plus général : URL + method + params => req HTTP
+			repose sur le service $httpBackend et $q
+		$ressource: Service Mappeur RESTful (spécifique) :
+			repose sur le service $http et $q
 			
+		var promesse = $q.all( [promesse1,promesse2,...] ); // resolue si tout les promesseX sont résolus ( si une promesse erreur ou rejeté, notre promesse sera erreur ou rejeté )
 	
+	Synchrone Vs Asynchrone:
+		#Synchrone:				
+			try{
+				action1();
+				action2();
+				console.log("OK");
+			}catch(erreur){
+				console.log("KO");
+			}
+		#Asynchrone:
+			var action1 = $q.defer();
+			var action2 = $q.defer();
+			var promesse = $q.all([
+				action1.promise,
+				action2.promise,
+			]);
+			promesse.then(function(resultat){
+				console.log("OK");
+			},function(erreur){
+				console.log("KO");
+			});
+			
+3. Service $http:
+	Toute requete Asynchrone renvoie une promesse.
+	put : MAJ complete
+	patch MAJ partiel
+	status response : 
+		famille 200 => OK
+		famille 300 => la ressource est dispo sur un autre emplacement
+		famille 400 => erreur , 404 : ressource n'a pas été trouvé
+		famille 500 => erreur serveur, 500 erreur interne au serveur
+	Forme Standard:
+		$http({ 	method: 'GET',
+					url: 'www.exple.com/api/data',
+					params: nomParam:valParam,
+					data,headers,timeout, etc //doc Angular
+			}).then(...);
+	Forme Simplifié:
+		$http.get(url,[config]);
+		$http.post(url,data,[config]);
+		
+		$http.get(url,[config])
+		.then(res=>{
+			console.log(res.data);
+		},function(err){
+			console.log(err.status+err.statusText);
+		});
+	
+	//Remplacer dans app, le module de services statique MailServiceMock par le nouveau module mailServiceHttp
+	angular.module("WebMail",["ngSanitize","ui.tinymce","mailServiceHttp","MesFiltres","MesDirectives"])
+	#Consommer les web services de l'API avec Angular:
+	//creation fichier : js/mailServiceHttp.js:
+		angular.module("mailServiceHttp",[])
+	
+		.factory("MailService",function($http){
+
+			var URL_API = "http://localhost:5000/api/";
+
+			return{
+				getDossiers: function(){
+					dossiers = [];
+					var promesse = $http.get(URL_API+"dossiers");
+					promesse.then(function(response){
+						//console.log(response.data);
+						angular.extend(dossiers,response.data);
+					},function(erreur){
+						console.log("getDossiers erreur famille" + erreur.status+" : "+erreur.data);
+					});
+					//console.log(dossiers);
+					return dossiers;
+				},
+				getDossier: function(valDossier){
+					dossierTrouve={};
+					
+					$http.get(URL_API+"dossiers/"+valDossier)
+					.then(res=>{
+						angular.extend(dossierTrouve,res.data);
+					})
+					.catch(erreur=>{
+						console.log("getDossier erreur famille" + erreur.status+" : "+erreur.data);
+					});
+					//console.log(dossierTrouve);
+					return dossierTrouve;
+				},
+				getMail: function(valDossier,idMail){
+					var mailRecupere = {};
+					
+					$http.get(URL_API+"dossiers/"+valDossier+"/"+idMail)
+					.then(res=>{
+						angular.extend(mailRecupere,res.data);
+					})
+					.catch(erreur=>{
+						console.log("getMail erreur famille" + erreur.status+" : "+erreur.data);
+					});
+					return mailRecupere;
+				},
+				envoiMail: function(mail){
+					$http.post(URL_API+"envoi",mail)
+					.then(res=>{
+
+					})
+					.catch(erreur=>{
+						alert("probléme de l'envoi du mail");
+						console.log("envoiMail erreur famille" + erreur.status+" : "+erreur.data);
+					});
+				}
+			};
+		});	
+			
+4. Service $ressource:
+	*c'est un module ext =>
+		1)Ajouter source: 
+			<script type="text/javascript" src="lib/anuglar1.2.16/angular-resource.min.js"></script>
+		2)Ajouter depandance module au depandance du module:
+			angular.module("mailServiceHttp",["ngResource"])
+		3)mentionner le nom du service à utliser dans factory
+			angular.module("mailServiceHttp",["ngResource"])
+
+			.factory("MailService",function($resource){
+			});	
+	* pour les services inclus dans le module par défaults, il suffit la 3) mentionner le nom du service à utiliser telque $scope,$location,$path,etc
+	
+	// mailServiceRest.js:
+	angular.module("mailServiceRest",["ngResource"])
+
+	.factory("MailService",function($resource){
+
+		var URL_API = "http://localhost:5000/api/";
+
+		var resourceRecupMail = $resource(URL_API + "dossiers/:idDossier/:idMail");
+		var resourceEnvoiMail = $resource(URL_API + "envoi");
+	 
+		return{
+			getDossiers: function(){
+				return resourceRecupMail.query();
+			},
+			getDossier: function(valDossier){
+				return resourceRecupMail.get({idDossier:valDossier});
+			},
+			getMail: function(valDossier,idMail){
+				return resourceRecupMail.get({idDossier:valDossier,idMail:idMail});
+			},
+			envoiMail: function(mail){
+				resourceEnvoiMail.save(mail,function(response){
+					console.log("mail envoyé");
+				},function(error){
+					console.log("envoiMail erreur famille" + erreur.status+" : "+erreur.data);
+				});
+			}
+		};
+	});
+
+5. Tuning de $http - Message de chargement:
+	#Ajouter un loader:
+	<div class="preloader" ng-show="chargementEnCours">
+		<div class="msgPreloader">
+			<h3>Chargement ...</h3>
+			<div class="loader"></div>
+		</div>
+	</div> 	
+
+	#Ajouter dans le module principale une configuration pour agir lors des requetes et lors des reponses:
+	//rootScope le scope le plus globale du module,
+	//scope => juste pour la div du controlleur
+		angular.module("WebMail",["ngSanitize","ui.tinymce","mailServiceRest","MesFiltres","MesDirectives"])
+		.config(function($httpProvider){
+			$httpProvider.interceptors.push(function($q,$rootScope){
+				
+				var nbReqs = 0;
+				return {
+					request : function(config){
+						nbReqs++;
+						$rootScope.chargementEnCours = true;
+						return config;
+					},
+					// erreur dans l'emission de la requete : pas utile dans notre cas
+					// requestErrorfunction(motifRejet){
+					//     return $q.reject(motifRejet);
+					// },
+					response(response){
+						if (--nbReqs == 0) {
+							$rootScope.chargementEnCours = false;
+						}
+						return response;
+					},
+					responseError(motifRejet){
+						if (--nbReqs == 0) {
+							$rootScope.chargementEnCours = false;
+						}
+						return $q.reject(motifRejet);
+					}
+				};
+			});
+		})
+
+		.controller("WebMailCtrl",function($scope,$rootScope,$location,$filter,MailService){
+	
+
+VII- Communication avec un serveur de messagerie en NodeJs (via IMAP et SMTP):
+1. Introduction:
+IMAP : Récupération de mail
+SMTP : Envoi de mail
+2. Communication avec un serveur IMAP:
+	Promise:
+	.then(res=>{
+		return res;
+	})
+	.catch()
+	.then(resultat=>{
+		})
+	.catch();
+3. Récupération et affichage des mails:
+	res.status(500).send("KO");
+	Style du mail HTML reçu a polué la page => le mettre dans un iframe
+4. Envoi de mails via un serveur SMTP:
+	
+5. Refactoring des middlewares
+6. Réutiliser la connexion IMAP
+7. Rafraichissement en temps réel avec socket.io
+
+
+Chapitre VII : code n'a pas été écrit ( vu seulement )

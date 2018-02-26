@@ -77,6 +77,12 @@ Snaps:
 	#remove 
 		sudo snap remove robomongo
 
+Cle 3G:
+	lsusb
+	sudo usb_modeswitch -v 12d1 -p 15ce -J
+
+
+
 
 
 

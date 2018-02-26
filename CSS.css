@@ -1,0 +1,38 @@
+
+#div takes fullscreen having grey color and it's placed above all the screen elements via position:absolute and z-index:999 :
+
+    <div class="preloader" ng-show="chargementEnCours">
+        <div class="msgPreloader">
+            <h3>Chargement ...</h3>
+            <div class="loader"></div>
+        </div>
+    </div> 
+
+	.preloader {
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		bottom: 0px;
+		right: 0px;
+
+		background-color: rgba(0, 0, 0, 0.7);
+		z-index: 999;
+	}
+
+	+.msgPreloader {
+	+       position: absolute;
+	+       margin: auto;
+	+
+	+       width: 300px;
+	+    height: 191px;
+	+
+	+       top: 0px;
+	+       left: 0px;
+	+       bottom: 0px;
+	+       right: 0px; 
+	+    
+	+    /* background-image: url(../img/cadrePopup.png); */
+	+    color: white;
+	+}
+
+	

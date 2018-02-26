@@ -13,3 +13,11 @@
 
 #Find file "bashrc" which is starting with "."
 	> find ~/ f -name "\.*" | grep "bashrc"	
+
+#Chmod:
+	> chmod [options] ugo file_name
+	> chmod -R 754 myFile
+	# 4 stands for "read",
+	# 2 stands for "write",
+	# 1 stands for "execute",
+	# 0 stands for "no permission."	
