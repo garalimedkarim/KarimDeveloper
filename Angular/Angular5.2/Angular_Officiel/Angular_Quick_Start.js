@@ -356,8 +356,9 @@ VI-Services:
 
 	> ng generate component messages
 	> ng generate service message --module=app
-
+	
 		#/src/app/message.service.ts:
+		//Injectable to allow the injection of other services into this service
 		import { Injectable } from '@angular/core';
 
 		@Injectable()
@@ -585,15 +586,129 @@ imports: [
 
 
 VIII-HTTP:
-1.Simulate a data server using "In-memory Web API":
+1.import HttpClientModule:
+To make HttpClient available everywhere in the app, open the root AppModule, 
+import the HttpClientModule symbol from @angular/common/http,
+add it to the @NgModule.imports array.
+
+
+2.Simulate a data server using "In-memory Web API":
 It may also be convenient in the early stages of your own app development when the server's web api is ill-defined or not yet implemented.
 Important: the "In-memory Web API" module has nothing to do with HTTP in Angular.
 >npm install angular-in-memory-web-api --save
 
+//rest of config of this module not copied
 
+3.Heroes and Http:
+3.1.Get Heroes with HttpClient:
+#component:
+	getHeroes(): void {
+		this.heroService.getHeroes()
+			.subscribe(heroes => this.heroes = heroes);
+	}
+#service:
+	/** GET heroes from the server */
+	getHeroes (): Observable<Hero[]> {
+	  return this.http.get<Hero[]>(this.heroesUrl)
+		.pipe(
+		  tap(heroes => this.log(`fetched heroes`)),
+		  catchError(this.handleError('getHeroes', []))
+		);
+	}
 
+	/**
+	 * Handle Http operation that failed.
+	 * Let the app continue.
+	 * @param operation - name of the operation that failed
+	 * @param result - optional value to return as the observable result
+	 */
+	private handleError<T> (operation = 'operation', result?: T) {
+	  return (error: any): Observable<T> => {
 
+		// TODO: send the error to remote logging infrastructure
+		console.error(error); // log to console instead
 
+		// TODO: better job of transforming error for user consumption
+		this.log(`${operation} failed: ${error.message}`);
+
+		// Let the app keep running by returning an empty result.
+		return of(result as T);
+	  };
+	}
+
+3.2.Get Hero by Id:
+#compoenent:
+  getHero(): void {
+    const id = +this.route.snapshot.paramMap.get('id'); //+ before elt convert it to number
+    this.heroService.getHero(id)
+      .subscribe(hero => this.hero = hero);
+  }
+  
+#service:
+/** GET hero by id. Will 404 if id not found */
+getHero(id: number): Observable<Hero> {
+  const url = `${this.heroesUrl}/${id}`;
+  return this.http.get<Hero>(url).pipe(
+    tap(_ => this.log(`fetched hero id=${id}`)),
+    catchError(this.handleError<Hero>(`getHero id=${id}`))
+  );
+}
+
+3.3.Update Hero:
+#compoenent:
+  save(): void {
+    this.heroService.updateHero(this.hero)
+      .subscribe(() => this.goBack());
+  }
+#service:
+  /** PUT: update the hero on the server */
+  updateHero (hero: Hero): Observable<any> {
+
+    return this.http.put(this.heroesUrl, hero, this.httpOptions).pipe(
+      tap(_ => this.log(`updated hero id=${hero.id}`)),
+      catchError(this.handleError<any>('updateHero'))
+    );
+  }
+  
+3.4.Add new Hero:
+#compoenent:
+add(name: string): void {
+  name = name.trim();
+  if (!name) { return; }
+  this.heroService.addHero({ name } as Hero)
+    .subscribe(hero => {
+      this.heroes.push(hero);
+    });
+}
+
+#service:
+/** POST: add a new hero to the server */
+addHero (hero: Hero): Observable<Hero> {
+  return this.http.post<Hero>(this.heroesUrl, hero, httpOptions).pipe(
+    tap((hero: Hero) => this.log(`added hero w/ id=${hero.id}`)),
+    catchError(this.handleError<Hero>('addHero'))
+  );
+}
+
+3.5.Delete Hero:
+#component:
+delete(hero: Hero): void {
+  this.heroes = this.heroes.filter(h => h !== hero);
+  this.heroService.deleteHero(hero).subscribe();
+}
+#service:
+/** DELETE: delete the hero from the server */
+deleteHero (hero: Hero | number): Observable<Hero> {
+  const id = typeof hero === 'number' ? hero : hero.id;
+  const url = `${this.heroesUrl}/${id}`;
+
+  return this.http.delete<Hero>(url, httpOptions).pipe(
+    tap(_ => this.log(`deleted hero id=${id}`)),
+    catchError(this.handleError<Hero>('deleteHero'))
+  );
+}
+
+3.6.Search by name:
 
 
 

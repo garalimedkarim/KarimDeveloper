@@ -138,7 +138,7 @@ IV- Introduction to Components:
 	
 	@NgModule({
 		imports : [BrowserModule], //external modules that we want to be available to all component that belong to this Angular module. external module can be Angular's module, a third party or our own Angualr modules
-		delaration : [AppComponent], //we define which of our components belong(appartient) to this module, by convention AppModule is the root module so we declare it here	
+		delaration : [AppComponent], //we define which of our components belong(appartient) to this module, by convention AppComponent is the root component so we declare it here	
 		bootstrap : [AppComponent], //define the startup component of the application
 	})
 	
@@ -159,7 +159,7 @@ V- Templates, Interpolation and Directives:
 2.Building a template:
 	modified:   src/index.html //setting basic template of bootstrap4
 	src/app/products/products-list.component.html //setting html of the template
-	
+
 3.Building the component:
 	//src/app/products/products-list.component.ts:
 	import { Component } from '@angular/core';
@@ -174,7 +174,7 @@ V- Templates, Interpolation and Directives:
 	}
 4.Using a component as a directive:
 	Two ways to get a directive of a component in our module:
-		1) delcare its component in our component //declaration
+		1) delcare its component in our module //declaration
 		2) import a moudle that contains this module like we have done with //BrowserModule
 	modified:   src/app/app.component.html : moving the template to this file
 	modified:   src/app/app.component.ts : 
@@ -569,6 +569,12 @@ X- Retrieving Data Using HTTP:
 	
 3.Sending an HTTP Request:
 Theoric:
+	#app.module.ts:
+		+import { HttpClientModule } from '@angular/common/http';
+		imports: [ //imports array is for pulling external modules
+			//... ,
+			HttpClientModule,
+		]
 	#product.service.ts:
 		+import { HttpClient } from '@angular/core';
 		//...
@@ -578,12 +584,7 @@ Theoric:
 		getProducts(): Observable<IProduct[]> {
 			return this._http.get<IProduct[]>(this._productUrl);
 		}
-	#app.module.ts:
-		+import { HttpClientModule } from '@angular/common/http';
-		imports: [ //imports array is for pulling external modules
-			//... ,
-			HttpClientModule,
-		]
+
 Practise:		
 	#app.module.ts:
 	+import { HttpClientModule } from '@angular/common/http';
@@ -667,11 +668,11 @@ XI- Navigation and Routing Basics:
 		*)adding property product: IProduct (importing interface)
 	2)declaring WelcomeComponent in the app.module.ts
 
-	modified:   src/app/app.module.ts
-	src/app/products/product-details.component.css
-	src/app/products/product-details.component.html
-	src/app/products/product-details.component.spec.ts
-	src/app/products/product-details.component.ts
+	#modified:   src/app/app.module.ts
+	#src/app/products/product-details.component.css
+	#src/app/products/product-details.component.html
+	#src/app/products/product-details.component.spec.ts
+	#src/app/products/product-details.component.ts
 
 3.How Routing Works:
 	Local routing in HTML5 without # => We need to configure our web server to perform URL rewriting => that's depend of the web server: See the documentation
