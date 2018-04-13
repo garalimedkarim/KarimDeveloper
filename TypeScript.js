@@ -7,3 +7,47 @@ obj: Ingrediant[];
 	// values are assigned to them, and...
 	myObject = <TypeA> otherObject;     // using <>
 	myObject = otherObject as TypeA;    // using as keyword
+
+//--
+There are 4 possible convertion methods in TypeScript for arrays:
+let x = []; //any[]
+
+let y1 = x as number[];
+let z1 = x as Array<number>;
+let y2 = <number[]>x;
+let z2 = <Array<number>>x;
+
+//-- 
+
+#Promise:
+	new Promise(function(resolve, reject) {
+	      if (false) {
+	          var phone = {
+	              brand: 'Samsung',
+	              color: 'black'
+	          };
+	          resolve(phone); // fulfilled
+	      } else {
+	          var reason = new Error('mom is not happy');
+	          reject(reason); // reject
+	      }
+	});
+
+#Asynchronous:
+	  test(){
+	    alert('0');
+	    new Promise(resolve => {
+	      setTimeout(() => {
+	        alert('1');
+	        resolve();
+	      },5000);
+	    })
+	    .then(()=>{
+	      setTimeout(() => {
+	        alert('2');
+	      },2000);
+	    });
+	  }
+
+#How to access the correct `this` inside a callback?
+	https://stackoverflow.com/questions/20279484/how-to-access-the-correct-this-inside-a-callback?noredirect=1&lq=1

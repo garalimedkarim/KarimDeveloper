@@ -80,6 +80,7 @@ Snaps:
 Cle 3G:
 	lsusb
 	sudo usb_modeswitch -v 12d1 -p 15ce -J
+	mon tel : 51608033
 
 
 
