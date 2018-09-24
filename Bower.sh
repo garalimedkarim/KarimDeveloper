@@ -29,3 +29,9 @@ Bower packages :
 	bower list --paths
 	bower uninstall jquery
 	bower install jquery#1.9.2	
+
+
+Bower search available versions for a package:
+	bower info font-awesome
+Bower install specific versions
+	bower install font-awesome#4.7.0

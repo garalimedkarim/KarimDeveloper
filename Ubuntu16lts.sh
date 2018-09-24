@@ -1,3 +1,12 @@
+Ubuntu Architecture:
+	/var/www/html/
+	/var/www/Symfony/
+
+	/etc/apaache2/site-availables
+	/etc/apaache2/site-enabled
+	/etc/hosts
+
+
 set Clavier Azerty temporairement
 	>setxkbmap fr
 

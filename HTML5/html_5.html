@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Page Title</title>
+		<style>
+            body{
+                margin:0;
+                padding: 0;
+            }
+            li{
+                background: red;
+                color: white;
+                display: inline;
+                padding: 5px;
+            }
+            li:after{
+                content: " | ";
+            }
+            li:last-child:after{
+                content: "";
+            }
+        </style>
+	</head>
+	<body>
+		<header></header>
+		<nav>
+            <ul>
+                <li>link1</li>
+                <li>link2</li>
+                <li>link3</li>
+            </ul>
+        </nav>
+		<section>
+            <progress value="5" max="10"> </progress>
+            <br>
+            <meter min="0" max="1" value=".6" low=".4" high=".8" optimum=".5"> </meter>
+        </section>
+		<article>
+            <p>this an aricle</p>
+            <details>
+                <summary>References:</summary>
+                <ul>
+                    <li>item1</li>
+                    <li>item2</li>
+                </ul>
+            </details>
+        </article>
+		<footer></footer>		
+	</body>
+</html>

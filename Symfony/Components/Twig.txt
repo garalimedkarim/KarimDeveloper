@@ -5,4 +5,16 @@
         {% for column in columns %}
             {{ attribute(object, column) }} {# equivalent to php $object[$column] #}
         {% endfor %}
-    {% endfor %}	
+    {% endfor %}
+
+    #display DataTime Object:
+    	{{ fournisseur.dateCreation|date('Y-m-d')  }}
+    #date now + 2days:
+    	{{date('+2days')|date('Y-m-d') }}
+    #Difference date:
+	    {% if( date( fournisseur.dateCreation) < date('+2days') )%}
+	        AAAAAAAAAAAA
+	    {%endif%}    	
+
+	#Integer force nb caractere : 1 => 00001:
+		{{ "%05d"|format(fournisseur.id) }}

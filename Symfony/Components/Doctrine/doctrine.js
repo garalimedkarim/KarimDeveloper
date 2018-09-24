@@ -1,4 +1,11 @@
 
+Doc:
+	https://www.doctrine-project.org/projects/doctrine-orm/en/2.6/reference/annotations-reference.html
+
+#Then doctrine only will flush $entity, ignoring any other.
+	$em->flush($entity);
+
+
 ** QuiryBuilder getType :
 	$qb = $em->createQueryBuilder();
 	echo $qb->getType(); // Prints: 0

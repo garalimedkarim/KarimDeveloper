@@ -1,0 +1,80 @@
+	.a{
+		background: red;
+		display: inline-block;
+	}
+
+	.inline{
+		display: inline;
+	}
+
+	.block{
+		display: block;
+	}
+
+	.inline-block{
+		display: inline-block;
+	}
+
+	.table{
+		display: table;
+	}
+
+	.bg1{
+		background: green;
+	}
+
+	.bg2{
+		background: blue;
+	}
+
+	.inline-margin{
+		background: yellow;
+		margin:15px;
+		float:left;
+	}
+
+	.fixed{
+		position: fixed;
+		background: red;
+		padding:10px;
+		left: 10px;
+		bottom: 10px;
+        z-index: 2;
+	}
+
+	.relative{
+		position: relative;
+		background: purple;
+		bottom: 150px;
+	}
+
+	body{
+		height: 2400px;
+	}
+
+/*	body {
+    	background: #ffffff url("img.jpg") no-repeat fixed right top;
+	}*/
+
+	.parentRelative{
+		position: relative;
+		background: aqua;
+		height: 150px;
+	}
+	.childAbsolute{
+		position: absolute;
+		background: green;
+		top:10px;
+		right:10px;
+	}
+
+	.aboveDiv{
+		height: 100vh;
+		width: 100%;
+		background-color: green;
+		position: absolute;
+		top:1px;
+    	opacity: 0.5;
+    	filter: alpha(opacity=50); /* For IE8 and earlier */
+    	z-index: -1;		
+	}

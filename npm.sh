@@ -13,3 +13,20 @@ search packages:
 		--aging halflife of package freshness in days default 180
 		--dataAge maximum data age in (days) or fetch from registry (default 1.5)
 		--refresh force data update (bool
+
+#Updating the CLI
+	[sudo] npm uninstall -g angular-cli @angular/cli 
+	npm cache clean 
+	[sudo] npm install -g @angular/cli 
+
+#Bower + Composer #Not Confirmed:
+To automate installation of libraries with Bower, we can connect it with Composer. With this approach, each time we run composer install or composer update, Bower will also update our JavaScript libraries. We can achieve this by changing composer.json a bit and adding a scripts section, like this:
+
+	"scripts": {
+	"post-install-cmd": [
+	"bower install"
+	],
+	"post-update-cmd": [
+	"bower install"
+	]
+	}

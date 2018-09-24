@@ -3,3 +3,16 @@ http://getbootstrap.com/docs/4.0/components/forms/
 https://www.quackit.com/bootstrap/bootstrap_4/tutorial/bootstrap_forms.cfm
 
 https://v4-alpha.getbootstrap.com/layout/grid/#horizontal-alignment
+
+Create a new responsive class : btn-block-sm
+To make an element get class d-block in cs only:
+	Use d-block with d-sm-inline (d-block for all and d-sm-inline to override for sm+)
+Same thing with margin-top:
+	mt-3 with mt-sm-0
+Same thing when ordering:
+	order-1 with order-sm-2
+
+www.bootswatch.com
+	https://youtu.be/nZbZ5AHZJnc
+
+Bootstrap 4: col-xs-x => col-xe 

@@ -1,0 +1,185 @@
+block elemnts (p,div,etc..) / inline elements(span,strong,input,etc..)
+
+inline with padding and margin is strange:
+inline elements ignore margin top bottom
+inline with padding top bottom is ok but ignore the height
+inline block is an inline that respect height and width with margin and padding
+inline with (float+width) => block
+inline-block makes a block element inline without full width but with an espace between the two blocks 
+to avoid this space dont use inline-block just use float left
+
+fixed related to body so bottom & left from the screen will decale
+	.fixed{
+		position: fixed;
+		background: red;
+		padding:10px;
+		left: 1px;
+		bottom: 1px;
+	}
+
+relative related to its orginal position: so top from its original position will declale
+Its original position stay occupied by nothing.
+relative can be a container or a parent for absolute element
+	.relative{
+		position: relative;
+		background: purple;
+		top: 20px;
+	}
+
+#absolute:
+absolute need to have a relative container (default body):
+
+	.parentRelative{
+		position: relative;
+		background: aqua;
+		height: 150px;
+	}
+	.childAbsolute{
+		position: absolute;
+		background: green;
+		top:10px;
+		right:10px;
+	}	
+
+absolute position goes to the nearest relative container; default the body is the lastest container
+
+#
+
+CSS background properties:
+	background-color
+	background-image: url("img.jpg")
+	background-repeat: no-repeat, repeat, repeat-x, repeat-y.
+	backgroundd-attachment: scroll/fixed
+	background-position: top right, center center, etc...
+
+body {
+	background: #ffffff url("img.jpg") no-repeat fixed right top;
+}
+
+#font properties
+Web safe fonts
+	font-family: font1, font2, font3;
+	font-style: italic/oblic;
+	font-size: normal/16 px; small/smaller/large/larger/x-large/xx-large
+
+
+	p.b {
+	    font: italic bold 12px/30px Georgia, serif;
+	}	
+
+#list properties
+	ul  {
+	    list-style: disc inside url("sqpurple.gif");
+	}
+	
+#Border
+div{
+	border: 4px dotted blue;
+}
+hidden border
+div{
+	border-width: 1px 2px; /* 1px 2px 1px 2px = top right bottom left */
+	border-style: solid dotted;
+	border-color: blue red green yellow;
+}
+
+#Margin
+div{
+	margin: 0 auto; //make the div in the center
+}
+
+#padding
+#width/height
+width default value is auto
+min-width default value 0
+max-width default value 100%
+
+#overflow
+div{
+	overflow: visible(default)/scroll/scroll-x/scroll-y/hidden;
+}
+
+#visiblity
+display:visible(d)/none
+visiblity:visible(d)/hidden
+
+#z-index
+z-index:auto(d)
+z-index: int : the biggest is above all
+z-index is used with position:absolute;
+
+
+	.aboveDiv{
+		height: 100vh;
+		width: 100%;
+		background-color: green;
+		position: absolute;
+		top:1px;
+    	opacity: 0.5;
+    	filter: alpha(opacity=50); /* For IE8 and earlier */
+    	z-index: -1;		
+	}
+
+#Content
+div:before{
+	content: "text text";
+	color:red;
+}
+
+#Cursor
+span{
+	cursor: pointer/cell/
+}
+
+#outline vs boder
+outline never change element size it is external
+span{
+	outline: 3px solid green;
+}
+
+#Selectors:
+div > span{...} /* > direct span child*/
+*{...}/*everything*/
+
+div+p{...} /*All p next to div  */
+
+div~p{...} /* p next brother to div */
+
+#Pseudo Classes:
+https://www.w3schools.com/css/css_pseudo_classes.asp
+
+#Attribues
+a[target="_blank"]{
+    color:green:
+}
+img[title="Image 2"]{
+   border-radius: 5px; 
+}
+input[type="password"]{
+    color:red;
+}
+
+#Media:
+<!-- Only on screen mode call style.css  -->
+<link rel="stylesheet" href="style.css" media="all|screen|print " />
+second solution a common css for all media:
+@media print{
+    p{
+        color:aqua;
+    }
+}
+
+design images: https://place-hold.it/400/00F/FFF
+ 
+
+Course HTML:
+<head>
+1) <meta charset="utf-8">
+2) <meta name="description" content="site d'education islamique">
+3) <title> Page 1 </title>
+4) load css <link .../>
+5) load js <script ... />
+
+#form
+<fieldset>
+    <legend>

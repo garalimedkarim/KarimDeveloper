@@ -7,3 +7,9 @@ $(document).ready(function(){
         $(this).css("color","red");
     });    
 });
+
+#test if elt doesnt exit in the DOM before acting: 
+	if ( $('.elt').length == 0 )
+
+#simple append:
+	elt.parent().append('<div class="loading"></div>');

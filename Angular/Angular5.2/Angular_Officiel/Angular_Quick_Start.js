@@ -283,11 +283,11 @@ VI-Services:
 #part1:
 	> ng generate service hero --module=app
 
-	modified:   src/app/app.module.ts
-	src/app/hero.service.spec.ts
-	src/app/hero.service.ts
+	#modified:   src/app/app.module.ts
+	#src/app/hero.service.spec.ts
+	#src/app/hero.service.ts
 	
-	//src/app/app.module.ts:
+	#src/app/app.module.ts:
 	+import { HeroService } from './hero.service';
 	...
 	-  providers: [],
@@ -345,12 +345,12 @@ VI-Services:
 	   }
 	   
 #part4: 
-	modified:   src/app/app.component.html
-	modified:   src/app/app.module.ts
-	modified:   src/app/hero.service.ts
-	src/app/message.service.spec.ts
-	src/app/message.service.ts
-	src/app/messages/
+	#modified:   src/app/app.component.html
+	#modified:   src/app/app.module.ts
+	#modified:   src/app/hero.service.ts
+	#src/app/message.service.spec.ts
+	#src/app/message.service.ts
+	#src/app/messages/
 
 	1) generating messages component + service message:
 

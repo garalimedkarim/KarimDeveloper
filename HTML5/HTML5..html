@@ -1,0 +1,89 @@
+Course HTML:
+	https://www.youtube.com/watch?v=6gjg5n9kyBU&list=PLDoPjvoNmBAyXCAQMLhDRZsLi_HurqTBZ&index=1
+
+HTML5 - ElZero : 
+	https://www.youtube.com/watch?v=6gjg5n9kyBU&index=1&list=PLDoPjvoNmBAyXCAQMLhDRZsLi_HurqTBZ
+
+I-Introduction
+II- Deprecated Tags:
+<acronym></acronym>
+NEW: <abbr title="Hypertext Markup Language">HTML</abbr>
+<applet></applet>
+NEW: <object></object> => pdf,file imbedded in the page.
+NEW: <iframe src=""></iframe> with att that can alert when the browser doesn't support iframe technologie
+IV-Semantics:
+	div = all of these but for semantics reasons we have introduced:
+		<header></header>
+		<nav></nav>
+		<section></section>
+		<article></article>
+		<footer></footer>
+
+V- Syntax:
+VI-Migrate from HTML4 to HTML5:
+  Validity is a google chrome plugin to validate HTML
+  MEME Type : https://www.sitepoint.com/mime-types-complete-list/
+  => for js and css we don't have to write the attribute type in HTML5 its default
+
+VII-Support HTML5 in old browsers:
+    Every undefined tag you write is an inline tag like span (only IE8- doesn't recognize the undefined tag)
+    Create an undefined element: <script>document.createElement("article") </script>
+    => Solution: Use html5shiv.min.js and it IE8- will recoginize undefined tags
+    Conditional Comments: 
+    http://www.htmldog.com/guides/html/advanced/conditionalcomments/
+    <!--[if IE]>
+        <script src="html5shiv.min.js"></script>
+    <![endif]-->
+
+VIII- New Tags : header, nav, section, ariticle, footer
+    => we can develop out page without using any div for semantic reasons.
+
+IX- New Tags : main, aside:
+    main is main tag
+    aside is a left or right bar that contains some other categories etc ..
+    box-sizing: border-box != default;
+        Include padding and border in the element's total width and height:
+        #example1 {
+            box-sizing: border-box;
+        }
+
+X- New Tags: progress, meter:
+     <progress value="5" max="10"> </progress>
+     <meter min="0" max="1" value=".6" low=".4" high=".8" optimum=".5"> </meter>
+
+XI-New Tags: details,mark, wbr:
+    <details>
+          <summary>References:</summary>
+        <ul>
+            <li>item1</li>
+            <li>item2</li>
+        </ul>
+    </details>
+    <mark>HTML5</mark>
+    <wbr> => breaks links 
+
+XII-New Tags - Figure, Figcaption
+    <figure>
+      <img src="img_pulpit.jpg" alt="The Pulpit Rock" width="304" height="228">
+    </figure>
+
+XIII-New Tags - Time, Dialog, Bdi
+XIV- New Form Elements: Datalist:
+XV- New Form Elements - Output:
+XVI- Audio:
+    https://www.youtube.com/watch?v=wO1h_bHeunE&list=PLDoPjvoNmBAyXCAQMLhDRZsLi_HurqTBZ&index=16
+XVII- Video:
+    https://www.youtube.com/watch?v=FPWkm-WyXRo&list=PLDoPjvoNmBAyXCAQMLhDRZsLi_HurqTBZ&index=17
+XVIII- Form Input - Color, Range, Number:
+XIX-Form Input - Email, Search, Url, Tel
+XX-Form Input - Time, Date, Month, Week
+XXI-Form Attributes - Form [ AutoCoplete, AutoFocus, NoValidate ]
+XXII-Form Attributes - Form [ Action, Method, EncType ]
+XXIII-Form Attributes - Form [ NoValidate, Target ] => for type="submit"
+XXIV-Form Attributes - Multiple, Placeholder, Required
+XXV-Form Attributes - Min, Max, Step, Pattern
+XXVI-Form Attributes - ReadOnly Vs Disabled
+XXVII-Canvas - Intro 
+    https://www.youtube.com/watch?v=Y5tcCx__0ug&list=PLDoPjvoNmBAyXCAQMLhDRZsLi_HurqTBZ&index=27
+XXVIII- SVG
+    https://www.youtube.com/watch?v=EyLfC7BOPHo&index=32&list=PLDoPjvoNmBAyXCAQMLhDRZsLi_HurqTBZ

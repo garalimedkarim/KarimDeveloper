@@ -1,0 +1,198 @@
+
+https://www.youtube.com/watch?v=euvU7Z-ACgw&index=56&list=PLDoPjvoNmBAyEyQaHOHO1HJtmSgGt07VC
+
+I-Introduction and What s New in Css 3
+II-Vendor Prefixes
+box-shadow
+    -webkit-box-shadow: // Chrome,Safari,iOs,Android
+    -moz-box-shadow: //Firefox
+    -o-box-shadow // Opera
+    -ms-box-shadow // IE
+ 
+    www.caniuse.com => box-shadow
+
+III-Border-Radius
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -o-border-radius: 10px;
+    -ms-border-radius: 10px;
+ 
+     border-top-right-radius: 50px;
+
+IV-Box Shadow
+    box-shadow: 10px -12px 10px 10px red inset; //  Horziontal Vertical blur spread color outset(d)|inset
+    
+    multiple shadow
+    box-shadow: 10px -12px 10px 10px red inset, 10px -12px 10px 10px green inset;
+
+V-Box Sizing
+    box-sizing: content-box(d) => any border|padding => the height or width of the element increases
+
+    box-sizing: border-box => any padding |border never affect the element width and height
+     
+    *,*:before,*:after{
+        box-sizing: border-box;
+        // -web-kit , -moz , -o , -ms 
+    }
+
+VI- Examples: Box Shadow, Border Radius
+VII- Text Shadows
+    https://www.youtube.com/watch?v=Sl8y0n57cxg&index=7&list=PLDoPjvoNmBAyEyQaHOHO1HJtmSgGt07VC
+VIII- Text Overflow
+    white-space: nowrap; //dont return to the line
+    overflow: visible(d) | hidden;
+    text-overflow: clip(d) | ellipsis // ellipsis => when we cat the text with overflow hidden this property makes three points ...
+    
+IX- Word Wrap, White Space
+    when a word is very long, white space can not break the word to the next line, SO we use
+        word-wrap: break-word (|normal(d))
+
+X- Transform Rotate
+    transform:rotate(30deg); 
+
+XI-Transfor Scale
+    transform: scale(2,2) //height,width => agrondir elt
+
+XII-Tranform Translate
+    transform: translate(1,1) // translate elt (X,Y)
+
+XIII-Transfor Skew
+    // el in7iraf by deg
+
+XIV-Transform Matrix
+    matrix(scaleX,scaleY,translateX,translateY,rotate)
+
+XV- Rotate
+    transform: rotatate(90deg);
+
+XVI-Tranform Translate 3D
+XVII-Tranform Scale 3D
+XVIII-Tranform Matrix 3D
+
+XIX-Tranform Perspective
+XX-Transform - Transform Origin, Style
+XXI-3D Transform - Backface Visibility
+XXII-3D Transform - Create Flip Card
+
+XXIII-Background New Features
+img{
+    background-size: 400px 300px; //(auto auto(d)) | contain(repeat img) | cover(allonger image)
+    background-clip: border-box(d)|padding-box|content-box;
+    background-origin: padding-box(d)|border-box|content-box
+}
+
+XXIV-Overflow
+overflow-x
+overflow-y
+
+XXV-Resize
+    div{
+        resize: both|vertical|horizontal|none(d);
+    }
+
+XXVI-Opacity
+    opacity:1(d)|0..1
+
+XXVII-Flex Direction | Flew Wrap
+.container{
+    display:flex //container occupies block and its elts are inline
+    flex-direction
+    flex-wrap:  wrap|nowrap
+} 
+
+XXVIII-Flex Flow | Justify Content
+    flex-flow: row wrap;//flex-direction flex-rap
+    justify-content: start(d)|end|center|space-between|space-around;
+
+XXIX-Align Items | Align Content
+    align-items: //justify content but vertically
+--- other configuration:
+    flex-wrap:wrap;
+    align-content: streetch(d)|
+    https://www.youtube.com/watch?v=MFEvqO_7i0Y&index=29&list=PLDoPjvoNmBAyEyQaHOHO1HJtmSgGt07VC
+
+XXX-Order | Flex Grow | Flex Shrink
+    https://www.youtube.com/watch?v=XPcOcBuuTgA&index=30&list=PLDoPjvoNmBAyEyQaHOHO1HJtmSgGt07VC
+
+XXXI-Flex Basis | Shorthand
+    https://www.youtube.com/watch?v=BbHBowLZ4nE&index=31&list=PLDoPjvoNmBAyEyQaHOHO1HJtmSgGt07VC
+
+XXXII-Transition - Intro
+XXXIII-
+XXXIV-
+XXXV-
+XXXVI-Multi Columns - Column Count, Column Gap
+    column-count:2; //divide in div in two pieces
+    column-gap: 100px //distance between peaces
+
+XXXVII-Multi Columns - Column Rule, Column Width
+    column-rule
+    column-width
+
+XXXVIII-Multi Columns - Column Span, Shorthand
+    column-span
+
+XXXIX-Animation - Intro & Keyframes
+XXXX-
+XXXXI-
+XXXXII-
+XXXXIII-
+XXXXIV-
+XXXXV-
+XXXXVI-
+XXXXVII-
+XXXXVIII-
+XXXXIX- Selectors - Next, Start With, End With, Contains
+    p ~ span => span preceded by p in the same container
+    [class^="ossama"]{} //all class which started by ossama apply this 
+    [role$="ed"] // all elts which have role attributes which ends with ed
+    [role*="x"] // contains "x"
+
+XXXXX-Selectors - Checked, Enabled, Disabled, Empty
+    input[type="radio"] :checked{color:red}
+    :disabled
+    :enabled
+    :empty{height:20px;width:50px;background: green;}
+
+XXXXXI- Selectors - Not, Last-Child, First-Of-Type 
+    body :not(div){
+        color:red;
+    }
+    body :not(first-child){
+        color:green; 
+    }
+    :last-child,:first-child{}
+    body div:first-of-type{}
+ 
+XXXXXII- Selectors - Only-Child, Only-Of-Type, Selection
+    p:only-child{}
+    p:only-of-type{}
+    ::selection{
+        color:white;
+        background-color: red;
+    }
+
+XXXXXIII-Selectors - Nth-Child, Nth-Of-Type Part 1
+    div:nth-child(2){}
+    div:nth-child(odd|even){}
+    div:nth-last-of-type(5){}
+
+XXXXXIV-Selectors - Nth-Child, Nth-Of-Type Part 2
+    div:nth-child(n+5){} //it begin by the 5th child if its a div
+    div:nth-of-type(n+5) //it begin by the 5th div child
+    -n+4 // from the first until the 4
+    2n+1 // odd...
+    div:nth-child(n+2):nth-child(-n+4) // from 2 to 4
+
+XXXXXV- Font Face
+    web safe fonts
+    google fonts : download or link cdn fonts
+    
+XXXXXVI- Media Query
+    @media (max-width: 500px){
+        class_a{}
+    }
+    @media (min-width:1000px) and (max-width:1600px){}
+ 
+    
