@@ -47,3 +47,7 @@
 30/05/2018:
 	#Bug: doctrine:generate:entity is not defined
 		Solution: verify sensio generator bundle ( I forgot it commented in AppKernel.php )
+
+19/10/2018:
+	#select with search: bootstrap-select
+		https://developer.snapappointments.com/bootstrap-select/

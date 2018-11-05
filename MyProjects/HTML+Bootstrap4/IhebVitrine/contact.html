@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>ElKhmir-Trading</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Cairo" rel="stylesheet">
+    <link href="loader.css" rel="stylesheet" type="text/css">    
+    <style>
+      .main{
+        height:100vh;
+        width: 100vw;
+        background: url('index.jpg') no-repeat scroll center center;
+        background-size: 100vw 100vh;
+        position: relative;
+        display: none;
+
+      }
+      .indexImg{
+        height:auto;
+        width: 100vw;
+        background-size: cover;  
+      }
+      .underC{
+        background: green;
+        position: absolute;
+        text-align: center;
+        width: 800px;
+        height: 200px;
+        border-radius: 15px;
+        opacity: 0.7;
+
+        margin: auto;
+        position: absolute;
+        top: 0; left: 0; bottom: 0; right: 0;
+
+        text-align: center;
+        vertical-align: middle;
+        line-height: 90px;
+      }
+      .popup{
+        position: absolute;
+        height:100vh;
+        width: 100vw;
+        background-color: rgba(0,0,255,0.1);
+        top:0;
+        z-index: 4;
+      }
+      .uc{
+        width: auto;
+        height: 50%;
+        position: absolute;
+        top:0;
+        bottom: 0;
+        right: 0;
+        left:0;
+        margin: auto;
+        z-index: 3;
+        opacity: 0.9;
+      }
+      .navSite{
+        font-size: 28px;
+        font-family: 'Cairo', sans-serif;
+      }
+      .loader{
+        position: absolute;
+        top: 1;
+        z-index: 5;
+        width: 100vw;
+        height: 100vh;
+        background: white;
+      }
+    </style>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
+<script>
+  $(document).ready(function(){
+    setTimeout(
+      function()
+      {
+        $('.popup').hide(1000);
+        $('.main').show();
+      }, 2000);
+  });
+ 
+</script>
+  
+  </head>
+
+  <body>
+    <div class="main">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-danger">
+        <a class="navbar-brand" href="index.html"><span class="navSite">AlKhemir-Trading</span></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item py-0">
+              <a class="nav-link" href="index.html">Home<span class="sr-only ">(current)</span></a>
+            </li>
+            <li class="nav-item py-0">
+              <a class="nav-link" href="index.html">Services</a>
+            </li>            
+            <li class="nav-item py-0">
+              <a class="nav-link" href="index.html">About</a>
+            </li>            
+            <li class="nav-item active py-0">
+              <a class="nav-link" href="index.html">Contact</a>
+            </li>
+<!--             <li class="nav-item">
+              <a class="nav-link" href="#">Pricing</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled" href="#">Disabled</a>
+            </li> -->
+          </ul>
+        </div>
+      </nav>      
+
+      <!-- <img src="index.jpg" class="indexImg"> -->
+<!--       <div class="underC">
+        <h1>Under Construction</h1>
+      </div> -->
+    </div>
+
+    <div class="popup">
+      
+
+<div class="loader">
+  <div class="load">
+    <div class="gear one">
+      <svg id="blue" viewbox="0 0 100 100" fill="#94DDFF">
+        <path d="M97.6,55.7V44.3l-13.6-2.9c-0.8-3.3-2.1-6.4-3.9-9.3l7.6-11.7l-8-8L67.9,20c-2.9-1.7-6-3.1-9.3-3.9L55.7,2.4H44.3l-2.9,13.6      c-3.3,0.8-6.4,2.1-9.3,3.9l-11.7-7.6l-8,8L20,32.1c-1.7,2.9-3.1,6-3.9,9.3L2.4,44.3v11.4l13.6,2.9c0.8,3.3,2.1,6.4,3.9,9.3      l-7.6,11.7l8,8L32.1,80c2.9,1.7,6,3.1,9.3,3.9l2.9,13.6h11.4l2.9-13.6c3.3-0.8,6.4-2.1,9.3-3.9l11.7,7.6l8-8L80,67.9      c1.7-2.9,3.1-6,3.9-9.3L97.6,55.7z M50,65.6c-8.7,0-15.6-7-15.6-15.6s7-15.6,15.6-15.6s15.6,7,15.6,15.6S58.7,65.6,50,65.6z"></path>
+      </svg>
+    </div>
+    <div class="gear two">
+      <svg id="pink" viewbox="0 0 100 100" fill="#FB8BB9">
+        <path d="M97.6,55.7V44.3l-13.6-2.9c-0.8-3.3-2.1-6.4-3.9-9.3l7.6-11.7l-8-8L67.9,20c-2.9-1.7-6-3.1-9.3-3.9L55.7,2.4H44.3l-2.9,13.6      c-3.3,0.8-6.4,2.1-9.3,3.9l-11.7-7.6l-8,8L20,32.1c-1.7,2.9-3.1,6-3.9,9.3L2.4,44.3v11.4l13.6,2.9c0.8,3.3,2.1,6.4,3.9,9.3      l-7.6,11.7l8,8L32.1,80c2.9,1.7,6,3.1,9.3,3.9l2.9,13.6h11.4l2.9-13.6c3.3-0.8,6.4-2.1,9.3-3.9l11.7,7.6l8-8L80,67.9      c1.7-2.9,3.1-6,3.9-9.3L97.6,55.7z M50,65.6c-8.7,0-15.6-7-15.6-15.6s7-15.6,15.6-15.6s15.6,7,15.6,15.6S58.7,65.6,50,65.6z"></path>
+      </svg>
+    </div>
+    <div class="gear three">
+      <svg id="yellow" viewbox="0 0 100 100" fill="#FFCD5C">
+        <path d="M97.6,55.7V44.3l-13.6-2.9c-0.8-3.3-2.1-6.4-3.9-9.3l7.6-11.7l-8-8L67.9,20c-2.9-1.7-6-3.1-9.3-3.9L55.7,2.4H44.3l-2.9,13.6      c-3.3,0.8-6.4,2.1-9.3,3.9l-11.7-7.6l-8,8L20,32.1c-1.7,2.9-3.1,6-3.9,9.3L2.4,44.3v11.4l13.6,2.9c0.8,3.3,2.1,6.4,3.9,9.3      l-7.6,11.7l8,8L32.1,80c2.9,1.7,6,3.1,9.3,3.9l2.9,13.6h11.4l2.9-13.6c3.3-0.8,6.4-2.1,9.3-3.9l11.7,7.6l8-8L80,67.9      c1.7-2.9,3.1-6,3.9-9.3L97.6,55.7z M50,65.6c-8.7,0-15.6-7-15.6-15.6s7-15.6,15.6-15.6s15.6,7,15.6,15.6S58.7,65.6,50,65.6z"></path>
+      </svg>
+    </div>
+    <div class="lil-circle"></div>
+    <svg class="blur-circle">
+      <filter id="blur">
+        <fegaussianblur in="SourceGraphic" stddeviation="13"></fegaussianblur>
+      </filter>
+      <circle cx="70" cy="70" r="66" fill="transparent" stroke="white" stroke-width="40" filter="url(#blur)"></circle>
+    </svg>
+  </div>
+        
+</div>
+    </div>
+
+  </body>
+</html>

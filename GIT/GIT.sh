@@ -21,3 +21,6 @@
 	
 #Detailler les nouveaux dossier :
 	git status -u 
+
+# git diff ignore space change
+	git diff --ignore-space-change

@@ -540,3 +540,7 @@ On peut ajouter à un formulaire un champ non mapé en mettant mapped => false
 			  $elementArrivage->setArrivage($arrivage);
 			}
 			//Added Block Ennnnnd
+
+# Entity LifeCycleCallbacks():
+* @ORM\HasLifecycleCallbacks()
+=> Entity LifeCycleCallbacks Are used for the entity it self and not to call other entities, if we call other entities we guarantee that the changes will be saved before flush so those changes may be will not flashed
