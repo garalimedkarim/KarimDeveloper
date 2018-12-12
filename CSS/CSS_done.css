@@ -19,20 +19,20 @@
 		z-index: 999;
 	}
 
-	+.msgPreloader {
-	+       position: absolute;
-	+       margin: auto;
-	+
-	+       width: 300px;
-	+    height: 191px;
-	+
-	+       top: 0px;
-	+       left: 0px;
-	+       bottom: 0px;
-	+       right: 0px; 
-	+    
-	+    /* background-image: url(../img/cadrePopup.png); */
-	+    color: white;
-	+}
+	.msgPreloader {
+	       position: absolute;
+	       margin: auto;
+	
+	       width: 300px;
+	    height: 191px;
+	
+	       top: 0px;
+	       left: 0px;
+	       bottom: 0px;
+	       right: 0px; 
+	    
+	    /* background-image: url(../img/cadrePopup.png); */
+	    color: white;
+	}
 
 	

@@ -51,3 +51,27 @@ let z2 = <Array<number>>x;
 
 #How to access the correct `this` inside a callback?
 	https://stackoverflow.com/questions/20279484/how-to-access-the-correct-this-inside-a-callback?noredirect=1&lq=1
+
+#Async Functions
+	//async function => return Promise
+	function resolveAfter2Seconds() {
+	  return new Promise(resolve => {
+	    setTimeout(() => {
+	      resolve('resolved');
+	    }, 2000);
+	  });
+	}
+
+	async function asyncCall() {
+	  console.log('calling');
+	  var result = await resolveAfter2Seconds();
+	  console.log(result);
+	  // expected output: 'resolved'
+	}
+
+	asyncCall();
+
+	//OUTPUT:
+		> "calling"
+		> "resolved"
+	//await is only valid in async function

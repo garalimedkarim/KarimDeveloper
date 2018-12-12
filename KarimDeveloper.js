@@ -51,3 +51,10 @@
 19/10/2018:
 	#select with search: bootstrap-select
 		https://developer.snapappointments.com/bootstrap-select/
+
+11/11/2018:
+	CSS: Button Animation : Ripple Effect:
+
+30/11/2018:
+	Install Mac Os Sierra in Virtual Box Ubuntu:
+		https://www.youtube.com/watch?v=pVc6rxk3OUM

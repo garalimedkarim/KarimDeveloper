@@ -86,13 +86,22 @@ Snaps:
 	#remove 
 		sudo snap remove robomongo
 
+Aptitude
+	aptitude search xvjf
+	aptitude install xvjf
+
 Cle 3G:
 	lsusb
 	sudo usb_modeswitch -v 12d1 -p 15ce -J
 	mon tel : 51608033
 
-
-
+Limit internet Speed
+	// list your connexions:
+	>route 
+	// sudo wondershaper route downloadSpeed uploadSpeed
+	//>sudo wondershaper eth0 1000 500
+	>sudo wondershaper enp8s0 3000 500
+	>sudo wondershaper clear eth0
 
 
 
