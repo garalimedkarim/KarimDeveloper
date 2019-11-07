@@ -9,7 +9,7 @@ search packages:
 		--relevance relevance factor for sorting number > 0 default 0.25
 		--downloads downloads factor for sorting number > 0 default 1.5
 		--freshness freshness factor for sorting number > 0 default 0.25
-		--halflife halflife of download count value in days `default 30
+		--halflife halflife of download count value in days `default 30   //`     
 		--aging halflife of package freshness in days default 180
 		--dataAge maximum data age in (days) or fetch from registry (default 1.5)
 		--refresh force data update (bool
@@ -30,3 +30,6 @@ To automate installation of libraries with Bower, we can connect it with Compose
 	"bower install"
 	]
 	}
+	
+#list global package versions
+	npm list -g  --depth=0

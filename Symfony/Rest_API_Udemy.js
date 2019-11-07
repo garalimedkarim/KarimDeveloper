@@ -73,5 +73,47 @@ II-What is a REST API and what makes a good one
 III-Environment Setup and Getting Started
 5. Setting Up VirtualBox and Vagrant on Windows
 6. Setting Up VirtualBox and Vagrant on Linux
+	vagrant box add laravel/homestead //to remove just replace add by remove
+	~/homestead
+
 7. Setting Up VirtualBox and Vagrant on MacOS
 8. Starting the Virtual Machine, Configuring the Project and Database 
+	add plugin 
+	vim homestead.yml
+
+IV-Basic REST Operations : Creating Database Models, Migrations and Fixtures:
+9. Creating Database Models and Migrations
+10. More Database Models, Migrations and Creating Data Fixtures 
+11. The View layer concept of FOSRestBundle (Important!) 
+	Advantages of FOSRestBundle:
+		write one controller to render HTML,XML and JSON
+			output is generated using Twig or Serializer (Symfony or JMS Serializer)
+	DIFFERENCE FROM THE USUAL SYMFONY RESPONSE
+		USUAL RESPONSE: HTML PAGE or JSON data
+		HERE: handled View Object Instance (processed by the View Handler)
+		View CLass is modeled after the symfony Response 
+		it also has data,headers and status code
+		The ViewHandler is a Class that will handle seralization or templating to create the output
+		Two Ways to Specify the response format:
+			1) /movies/3.json
+			2) Header: Accept: application/json
+	WE WILL USE DIFFRENT LISTENERS
+		Body LISTENER : bind JSON => ENTITY
+		Format LISTENER : deteremine the correct Format
+		View response LISTENER : automatically concert returned objectes (Entity,Collection or array) into JSON.
+		@View()
+		// continue this 2 min I'm tired
+
+
+
+	VIEW AND VIEWHANDLER
+
+
+12. Displaying the list of resources using GET 
+	composer require friendsofsymfony/rest-bundle
+	composer require jms/serializer-bundle
+	register in Kernel serializer-bundle before rest-bundle
+	
+13. Adding new resources with POST method 
+14. Deleting resources 
+15. Returning a single resource 

@@ -35,4 +35,169 @@
 	    color: white;
 	}
 
-	
+
+#Center div inside div
+	https://medium.freecodecamp.org/how-to-center-things-with-style-in-css-dc87b7542689
+	1)
+	.parent{ text-align: center }
+	.child { display: inline-block; }
+
+	2)
+	.child{
+		margin: 0 auto;
+	}
+
+	3) if inner div is Absolute then:
+	.innerDiv {
+	  background-color: #3D9970;
+	  width: 100px;
+	  height: 100px;
+	  position: absolute;
+	  left: 50%;
+	  margin-left: -50px;
+	}
+
+
+
+#Align right div inside div
+	1) 
+		/*like center method*/
+	2)
+	.child{
+		margin-left: auto;
+	    margin-right: 0px;
+	}
+
+#Bootstrap System:
+	.text-center-sm{ text-align:unset; }
+	.text-center-xs{ text-align:unset; }
+	.text-center-md{ text-align:unset; }
+	.text-center-lg{ text-align:unset; }
+	.text-left-sm{ text-align:unset; }
+	.text-left-xs{ text-align:unset; }
+	.text-left-md{ text-align:unset; }
+	.text-left-lg{ text-align:unset; }
+	.text-right-sm{ text-align:unset; }
+	.text-right-xs{ text-align:unset; }
+	.text-right-md{ text-align:unset; }
+	.text-right-lg{ text-align:unset; }		
+	@media (max-width: 767px) {
+		.text-left-xs{ text-align:left; }
+		.text-center-xs{ text-align:center; }
+		.text-right-xs{ text-align:right; }
+	}
+	@media (min-width: 768px) and (max-width: 991px) {
+		.text-left-xs{ text-align:left; }
+		.text-center-xs{ text-align:center; }
+		.text-right-xs{ text-align:right; }			
+		.text-left-sm{ text-align:left; }
+		.text-center-sm{ text-align:center; }
+		.text-right-sm{ text-align:right; }			
+	}
+	@media (min-width: 992px) and (max-width: 1199px) {
+		.text-left-xs{ text-align:left; }
+		.text-center-xs{ text-align:center; }
+		.text-right-xs{ text-align:right; }			
+		.text-left-sm{ text-align:left; }
+		.text-center-sm{ text-align:center; }
+		.text-right-sm{ text-align:right; }			
+		.text-left-md{ text-align:left; }
+		.text-center-md{ text-align:center; }
+		.text-right-md{ text-align:right; }					
+	}
+	@media (min-width: 1200px) {
+		.text-left-xs{ text-align:left; }
+		.text-center-xs{ text-align:center; }
+		.text-right-xs{ text-align:right; }			
+		.text-left-sm{ text-align:left; }
+		.text-center-sm{ text-align:center; }
+		.text-right-sm{ text-align:right; }			
+		.text-left-md{ text-align:left; }
+		.text-center-md{ text-align:center; }
+		.text-right-md{ text-align:right; }
+		.text-left-lg{ text-align:left; }
+		.text-center-lg{ text-align:center; }
+		.text-right-lg{ text-align:right; }					
+	}
+
+
+	HTML+CSS section Separator:
+		#CSS:
+			.separtor-top {
+			  position: relative;
+			  height: 70px;
+			  background-image: linear-gradient(yellow, orange);
+			  clip-path: polygon(
+			    0 0,
+			    100% 0,
+			    100% 100%,
+			    0 calc(100% - 5vw)
+			  );
+
+			}
+			.separator-bottom {
+			  height:70px;
+			  margin-top: -5vw;
+			  background-image: linear-gradient(135deg, blue, green);
+			}
+		#HTML:
+			<div style="background:red">AA</div>
+			<div class="separtor-top">
+			</div>
+			<div class="separator-bottom">
+			</div>
+			<div style="background:red">BB</div>
+	Separator1 + skew:
+		#HTML:
+			<div class="separator-div">
+			  <div class="skew"></div>
+			</div>
+		#CSS:
+			.separator-div {
+			  position: relative;
+			  height: 90px;
+			  overflow: hidden;
+			}
+
+			.skew {
+			  position: absolute;
+			  top: 0;
+			  bottom: 0;
+			  right: 0;
+			  left: 0;
+			  width: 100%;
+			  height: 100%;
+			  background-image: linear-gradient(#ff9d2f, #ff6126);
+			  transform: skewY(-3.5deg);
+			  transform-origin: top left;
+			}
+
+	Separator2 Triangle:
+		#CSS:
+			.separtor-top {
+			    position: relative;
+			    height: 70px;
+			    background-image: linear-gradient(#FF7F66, #FF7F66);
+			 }		
+			.separator-bottom {
+			    height: 70px;
+			    margin-top: -5vw;
+			    background-image: linear-gradient(135deg, #7ECEFD, #7ECEFD);
+			    position: relative;
+			}		
+			.triangle-down {
+			    width: 0;
+			    height: 0;
+			    border-left: 37px solid transparent;
+			    border-right: 37px solid transparent;
+			    border-top: 76px solid #FF7F66;
+			    position: absolute;
+			    left: 50%;
+			    margin-left: -50px;
+			}
+		#HTML:
+			<div class="separtor-top">
+			</div>
+			<div class="separator-bottom">
+			    <span class="triangle-down"></span>
+			</div>

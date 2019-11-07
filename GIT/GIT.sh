@@ -24,3 +24,6 @@
 
 # git diff ignore space change
 	git diff --ignore-space-change
+
+# get a file from another branch
+	git show c971615:templates/myBase.html.twig > myBASE.twig
