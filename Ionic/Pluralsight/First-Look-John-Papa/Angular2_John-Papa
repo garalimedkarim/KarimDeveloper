@@ -1,0 +1,24 @@
+I-Course Overview
+	Components and their Templates
+	Template Syntax including Data binding
+	Services using Dependency Injection
+	Routing
+	HTTP and Data
+	Observability with RxJS
+	How Angular Modules help organize code
+	
+II-Angular 2 in action:
+
+III- Angular 2 Architecture, What's New and What's Different:
+
+IV- Angular 2 Essentials: Components, Templates, Modules, and Metada:
+
+V- Displaying Data: Data Bindign, Directives, and Pipes:
+
+VI- Services, Dependency Injection, and Lifecycle Hooks:
+
+VII- Routing and HTTP:
+
+VIII- Routing:
+
+IX- Angular Modules:

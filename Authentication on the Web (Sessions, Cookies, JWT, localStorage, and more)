@@ -1,0 +1,27 @@
+Authentication
+
+authentication : verifying identity : 401
+authorization  : verifying permissions : 403
+
+stateful : session using cookie
+stateless : token using JWT / OAuth / other
+
+stateful : session is stored server-side in ( memory, cache (Redis, Memcached) or DB (postgress or MongoDB) )
+
+Cookies:
+	Cookie is a header like Authorization or Content-Type 
+	Server send header Set-Cookie and browser send header Cookie
+	used in session management, tracking of User
+	flags: 
+		HttpOnly (no js access to cookie) 
+		Secure ( https only )
+		SameSite ( can be only sent from the same domain, no CORS sharing )
+	CSRF:
+	
+Tokens:
+	
+		
+		
+	
+	
+

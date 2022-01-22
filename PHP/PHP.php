@@ -23,7 +23,7 @@ I-What is PHP:
 
 II-Working with Forms:
 Escaping Form Output:
-	htmlspecialchars(string)	
+	htmlspecialchars(string) // echo htmlspecialchars("<strong>Karim</strong><br>"); => <strong>Karim</strong><br> //ignore HTML compilation	
 	-> when entring <i>hi</i> doesnt exec html.
 	-> used only when outputting in HTML.
 Validating the Form:
@@ -56,7 +56,8 @@ IV-Conclusion
 		COOKIE -> HTTP HEADER
 
 
-[ Learn PHP 5 In Arabic ] (ElZero Web) https://www.youtube.com/watch?v=-u9_T_CLZHY&list=PLDoPjvoNmBAzH72MTPuAAaYfReraNlQgM&index=1
+Learn PHP 5 In Arabic (ElZero Web) 
+	https://www.youtube.com/watch?v=-u9_T_CLZHY&list=PLDoPjvoNmBAzH72MTPuAAaYfReraNlQgM&index=1
 1.Introduction:
 2.What I Need:
 	Apache : Web Server 
@@ -83,7 +84,7 @@ IV-Conclusion
 	Declaration
 		define(CONST_NAME,"value",opt :true or false); //by default false => exact Name
 		const CONST_NAME = "value";
-	Exple of Csts:
+	Exple of Predefined Csts:
 		echo CONST_NAME; //without $
 		echo __FILE__;
 		echo __DIR__;
@@ -203,7 +204,7 @@ IV-Conclusion
 	substr(string, start, OptionalnumberOfChars); // get a pieace from string, if opt not defined, to the last of string
 	// if start and OptianlnumverOfChars are negatif it's possible
 60.String Functions - Substr_[Compare, Count]
-	substr_count(string, str,start,length); // count str occurences in string
+	substr_count(main_str, str,start,length); // count str occurences in string
 	substr_compare(main_str, str, start_main, length, Case); //return 0 if equals
 61.Control Structure - Include, Require
 	require // fatal error when the file doesn't exist
@@ -277,7 +278,7 @@ IV-Conclusion
 	"/" // enable for all the website
 	if (count($_COOKIE) > 0)//cookies are enabled 	
 85.Cookies - Set Cookie + Examples
-	setcookie ($name,$value,$expires,$pathInDomain,$domain,$secure,$httponly) : bool
+	setcookie ($name,$value,$expires,$pathInDomain,$domain,$secure,$httponly) : bool //secure = https, httponly = Javascript doesn't access to cookie
 	setcookie("token","_dsqo44",time()+60,"/","klopup.com",true,true);
 86.Modify, Delete Cookie + Training
 	setcookie('background',$mainColor, time()+3600, '/');
@@ -303,7 +304,7 @@ IV-Conclusion
 	header('REFRESH:5;URL=control.php');
 92.Misc Functions - Sleep, uSleep + Examples
 	sleep(5); //sleep 5s
-	usleep(5000000) //sleep 5s also
+	usleep(5000000) //sleep 5s (microsecond)
 	time_sleep_until(time()+5); //timestamp arg
 
 93. Misc Functions - Exit, Die + Examples
@@ -315,7 +316,7 @@ IV-Conclusion
 	foreach ($filter_list() as $filter) {
 		echo $filter . '<br>';
 	}
-	filter_var($myVariable, FILTER_SANITIZE_SIZE);
+	filter_var($myVariable, FILTER_TYPE, options);
 96.Filter - Filter_Var Basics
 	//php type of filters:
 	// * validate filters : boolean,number,etc..
@@ -373,5 +374,25 @@ IV-Conclusion
 103.
 
 
+Apprendre PHP (Grafikart.fr)
+	https://www.youtube.com/playlist?list=PLjwdMgw5TTLVDv-ceONHM_C19dPW1MAMD
+	
+38.Exercice : Tableau dynamique:
+	http_build_query($array); // "p=a&q=3"
+
 
 	
+XSS Attack : cross-site Script Attack (injecting script in FORMS)
+	prevent it by 
+	<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  $name = test_input($_POST["name"]);
+  $email = test_input($_POST["email"]);
+  $website = test_input($_POST["website"]);
+  $comment = test_input($_POST["comment"]);
+  $gender = test_input($_POST["gender"]);
+}
+
+#Track php_error_log file realtime like (ng serve):
+> tail -f /opt/lampp/logs/php_error_log

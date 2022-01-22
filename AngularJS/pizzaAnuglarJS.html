@@ -1,0 +1,80 @@
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+<script>
+console.log("This is a test");
+//do not forget to use jQuery instead of $.!!!
+
+jQuery(document).ready(function(){
+  jQuery("#click1").click(function(){
+    alert("click1");
+  });
+
+  jQuery("#btn-keyup").click(function(){
+    //alert("btn-keyup");
+    jQuery('#inputRes').trigger('keyup');
+  });
+
+  jQuery("#btn-keydown").click(function(){
+    //alert("btn-keydown");
+    jQuery('#inputRes').trigger('keydown');
+  });
+
+  jQuery("input,select").keydown(function(){
+		console.log('keydown');
+    jQuery(this).css("background-color", "yellow");
+  });
+  jQuery("input,select").keyup(function(){
+		console.log('keyup');
+    jQuery(this).css("background-color", "pink");
+  });
+
+});
+
+</script>
+
+<div ng-app="myApp" ng-controller="myCtrl">
+  <input id="newInput" ng-change="change2('newInput','inputRes')" ng-model="newInput">
+  <br>
+  <input name="inputRes" id="inputRes" ng-model="inputRes" />
+	<br />
+	<button type="button" id="click1" >Click1</button>
+  <button type="button" id="btn-keyup">triggerKeyUp</button>
+  <button type="button" id="btn-keydown">triggerKeyDown</button>
+	<br />
+	<select ng-change="change2('newSelect','selectRes')" ng-model="newSelect">
+	  <option value="volvo">Volvo</option>
+	  <option value="saab">Saab</option>
+	  <option value="mercedes">Mercedes</option>
+	  <option value="audi">Audi</option>
+	</select>
+	<br />
+	<select name="selectRes" ng-model="selectRes">>
+	  <option value="volvo">Volvo</option>
+	  <option value="saab">Saab</option>
+	  <option value="mercedes">Mercedes</option>
+	  <option value="audi">Audi</option>
+	</select>
+</div>
+
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope) {
+  $scope.count = 0;
+  $scope.change2 = function(src,dest){
+  	//alert('change');
+  	//console.log("elt",elt);
+  	//console.log("newInput",$scope.newInput);
+  	//console.log("scope",$scope['newInput']);
+    //jQuery('#inputRes').val($scope['newInput']);
+		//$scope[dest] = $scope[src];
+		console.log('src',src,"dest",dest);
+		angular.element(document.querySelector("[name="+dest+"]")).val($scope[src]);
+		//angular.element(document.querySelector('#'+dest)).triggerHandler('keydown');
+		// angular.element('#'+dest).triggerHandler('keyup');
+		angular.element(document.querySelector("[name="+dest+"]")).triggerHandler('keyup');
+		angular.element(document.querySelector("[name="+dest+"]")).triggerHandler('keydown');
+  };
+
+});
+</script>
